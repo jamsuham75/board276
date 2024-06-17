@@ -61,13 +61,14 @@ app.use('/', require('./routes/auth.js'));
 //MongoDB 연동
 let mydb;
 const mongoClient = require('mongodb').MongoClient;
-const url = process.env.DB_URL;
+// const url = process.env.DB_URL;
+const url = 'mongodb+srv://admin:1234@cluster0.airyv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 mongoClient.connect(url).then(client=>{
     console.log('몽고DB 접속');
     mydb = client.db('myboard');
    
-    app.listen(process.env.PORT, function(){
+    app.listen(8081, function(){
         console.log("포트 8081으로 서버 대기...");
     });
 })
